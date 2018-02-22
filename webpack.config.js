@@ -2,7 +2,7 @@
 const  CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
 
-
+const buildDir = 'build';
 const path = `${__dirname}/build`;
 
 module.exports = {
@@ -12,7 +12,8 @@ module.exports = {
     filename: 'bundle.[hash].js',
   },
   devServer: {
-    contentBase: './build'
+    contentBase: './${buildDir}',
+    historyApiFallback: true,
   },
   devtool: 'inline-source-map',
   plugins: [

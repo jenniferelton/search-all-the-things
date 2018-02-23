@@ -1,13 +1,28 @@
-import Template from '../Template';
-import html from './app.html';
-import './app.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import Header from './Header';
+import Search from '../search/Search';
+import movieDetail from '../movies/MovieDetail';
 
-const template = new Template(html);
+import './App.css';
 
-export default class App {
+export default class App extends Component {
+
   render() {
-    const dom = template.clone();
+    return (
+      <Router>
+        <div>
+          <Header>
+            <main>
+              <Switch>
+                
+              </Switch>
+            </main>
+          </Header>
+        </div>
 
-    return dom;
+
+      </Router>
+    )
   }
 }

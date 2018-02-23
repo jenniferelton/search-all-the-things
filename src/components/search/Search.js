@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styles from './Search.css';
+import Movies from '../movies/Movies';
+import SearchForm from '../search/SearchForm';
+import { search } from '../../services/movieApi';
 
 export default class Search extends Component {
-
-  static proptypes = {
-    onSearch: PropTypes.func.isRequired
+  
+  state = {
+    search: ''
   };
+//  state = {
+//     movies: null,
+//     error: null
+//   };
 
-  handleSubmit = () => {
-    event.preventDefault();
-    this.props.onSearch(event.target.elements.search.value);
+  componentDidMount() {
+    this.handleSearch('star wars');
   }
-   
 
+  handleSearch = searchTerm => {
+    this.setState({ error: null });
+
+    search(searchTerm)
+      .then(({ Search }) => {
+        this.setState({ movies: Search });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+  };
+  
   render() {
+    const { movies, error } = this.state;
 
     return (
-      <form className={styles.search}
-      onSubmit={this.handleSubmit}>
-        <fieldset>
-          <label>
-            Search for Movies:<input name="search" placeholder="enter movie search"/> 
-          </label>
-          <label>
-            &nbsp;<button>Search</button>
-          </label>
-        </fieldset>
-      </form>
+      <div>
+        <SearchForm onSearch={this.handleSearch}/>
+        {error && <div>{error}</div>}
+        {(!error && movies) && <Movies movies={movies}/>}
+      </div>
     );
   }
 }

@@ -36,11 +36,19 @@ export default class Search extends Component {
     this.searchFromQuery(next);
   }
   
+  searchUpdate(query) {
+    const { search: searchTerm } = queryString.parse(query);
+    this.setState({ searchTerm });
+    if(!searchTerm) return;
+  }
+
+
   searchFromQuery(query) {
     const { search: searchTerm } = queryString.parse(query);
     this.setState({ searchTerm });
     if(!searchTerm) return;
-
+    
+    
     search(searchTerm, this.state.page)
       .then((response) => {
         this.setState({

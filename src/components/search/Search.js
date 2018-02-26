@@ -60,9 +60,11 @@ export default class Search extends Component {
   handlePaging = incr => {
     this.setState(
       prev => ({ page: prev.page + incr }),
-      () => this.searchMovies()
+      this.searchMovies
     );
   };
+
+
 
   handleSearch = searchTerm => {
     this.setState({ error: null });

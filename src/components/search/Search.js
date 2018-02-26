@@ -36,10 +36,20 @@ export default class Search extends Component {
     this.searchFromQuery(next);
   }
   
-  searchUpdate(query) {
-    const { search: searchTerm } = queryString.parse(query);
-    this.setState({ searchTerm });
-    if(!searchTerm) return;
+  searchUpdate() {
+    const { page, searchTerm } = this.state;
+    search(searchTerm, page)
+      .then((response) => {
+        this.setState({
+          movies: response.Search,
+          totalResults: response.totalResults
+        });
+  
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+    
   }
 
 
@@ -61,19 +71,22 @@ export default class Search extends Component {
         this.setState({ error });
       });
   }
+  
 
+  
+  
   handlePrev = () => this.handlePaging(-1);
   handleNext = () => this.handlePaging(1);
-
+  
   handlePaging = incr => {
     this.setState(
       prev => ({ page: prev.page + incr }),
-      this.searchMovies
+      this.searchUpdate
+ 
     );
   };
-
-
-
+  
+  
   handleSearch = searchTerm => {
     this.setState({ error: null });
     

@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 import styles from './Movie.css';
 
 
-
 export default class Movie extends Component {
 
-  
 
-  static PropTypes = {
-    imbdID: PropTypes.string,
+  static propTypes = {
+    imdbID: PropTypes.string,
     Poster: PropTypes.string,
     Title: PropTypes.string,
     Year: PropTypes.string,
@@ -20,18 +18,20 @@ export default class Movie extends Component {
     const { imdbID, Poster, Title, Year } = this.props;
     
     return (
-      <li className={styles.movie}>
+      <div id="page">
+        <li className={styles.movie}>
 
-        <Link to={`/movies/${imdbID}`}>
+          <Link to={`/movies/${imdbID}`}>
+           
+        
+            <img alt={Title} src={Poster}/>
 
-          <img alt={Title} src={Poster}/>
+            <h3>{Title}</h3>
 
-          <h3>{Title}</h3>
-
-          <p>Released {Year}</p>
-        </Link>
-      </li>
-      
+            <p>Released {Year}</p>
+          </Link>
+        </li>
+      </div>
     );
   }
 }

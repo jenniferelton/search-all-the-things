@@ -1,0 +1,19 @@
+:local(.header) {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1em; 
+  background: #c28e80;
+}
+
+
+a {
+  margin: 1.5rem;
+  justify-content: space-between; 
+}
+
+h1 {
+  display: flex;
+  margin-right: 15em;
+  color: white;
+  text-shadow: 3px 3px 5px #000000;
+}

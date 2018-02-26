@@ -1,5 +1,5 @@
+const BASE_URL = 'http://www.omdbapi.com';
 const API_KEY = 'c97f7ec';
-const BASE_URL = 'http://www.omdbapi.com/?s=';
 const URL = `${BASE_URL}/?apikey=${API_KEY}`;
 
 const get = url => fetch(url)
@@ -13,8 +13,10 @@ export const checkResponseData = data => {
 };
 
 
-export function search(term) {
-  const url = `${URL}&s=${encodeURIComponent(term)}`;
+
+export function search(term, page) {
+  const url = `${URL}&s=${encodeURIComponent(term)}&page=${page}`;
+  console.log(url);
   return get(url);
 }
 
@@ -23,10 +25,3 @@ export function getMovie(id) {
   const url = `${URL}&i=${id}`;
   return get(url);
 }
-
-
-
-
-
-
-

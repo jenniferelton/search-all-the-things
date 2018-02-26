@@ -1,0 +1,8 @@
+:local(.search) {
+  display: flex;
+  padding: 1em;
+}
+
+form {
+  margin-left: 11rem;
+}

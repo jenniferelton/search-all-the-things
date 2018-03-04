@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Header from './Header';
 import Search from '../search/Search';
 import MovieDetail from '../movies/MovieDetail';
-import './App.css';
+
 
 export default class App extends Component {
 

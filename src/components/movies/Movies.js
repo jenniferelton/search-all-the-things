@@ -14,7 +14,7 @@ export default class Movies extends Component {
 
     return (
       <ul className={styles.movies}>
-        {movies.map(movie => <Movie key={movie.imdbID} {...movie}/>)}
+        {movies.map((movie, i) => <Movie key={i} {...movie}/>)}
       </ul>
     );
   }

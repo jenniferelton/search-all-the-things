@@ -4,7 +4,6 @@ import { getMovie } from '../../services/movieApi';
 
 export default class MovieDetail extends Component {
 
-
   static propTypes = {
     imdbID: PropTypes.string.isRequired,
     history: PropTypes.object

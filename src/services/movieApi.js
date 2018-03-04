@@ -12,14 +12,10 @@ export const checkResponseData = data => {
   throw data.Error;
 };
 
-
-
 export function search(term, page) {
   const url = `${URL}&s=${encodeURIComponent(term)}&page=${page}`;
-  console.log(url);
   return get(url);
 }
-
 
 export function getMovie(id) {
   const url = `${URL}&i=${id}`;

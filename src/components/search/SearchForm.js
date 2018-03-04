@@ -4,7 +4,6 @@ import styles from './SearchForm.css';
 
 export default class SearchForm extends Component {
 
-
   static propTypes = {
     searchTerm: PropTypes.string,
     onSearch: PropTypes.func.isRequired

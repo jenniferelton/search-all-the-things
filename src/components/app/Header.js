@@ -4,10 +4,8 @@ import styles from './Header.css';
 
 export default class Header extends Component {
 
-
   render() {
-
-    
+ 
     return (
      
       <header className={styles.header}>
@@ -20,7 +18,6 @@ export default class Header extends Component {
           </ul>
         </nav>
       </header>
-     
     );
   }
 }

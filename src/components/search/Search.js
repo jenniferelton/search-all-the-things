@@ -7,7 +7,6 @@ import queryString from 'query-string';
 import Paging from '../app/Paging';
 
 
-
 const getSearch = location => location ? location.search : '';
 
 export default class Search extends Component {
@@ -52,12 +51,10 @@ export default class Search extends Component {
     
   }
 
-
   searchFromQuery(query) {
     const { search: searchTerm } = queryString.parse(query);
     this.setState({ searchTerm });
     if(!searchTerm) return;
-    
     
     search(searchTerm, this.state.page)
       .then((response) => {
@@ -65,15 +62,12 @@ export default class Search extends Component {
           movies: response.Search,
           totalResults: response.totalResults
         });
-
       })
+
       .catch(error => {
         this.setState({ error });
       });
   }
-  
-
-  
   
   handlePrev = () => this.handlePaging(-1);
   handleNext = () => this.handlePaging(1);
@@ -82,10 +76,8 @@ export default class Search extends Component {
     this.setState(
       prev => ({ page: prev.page + incr }),
       this.searchUpdate
- 
     );
   };
-  
   
   handleSearch = searchTerm => {
     this.setState({ error: null });
